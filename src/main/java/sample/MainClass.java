@@ -11,17 +11,17 @@ public class MainClass {
         PersianDateConverter persianDateConverter = new PersianDateConverter();
 
         persianDateConverter.setPersianDate(1372,8,18);
-        String startDate = persianDateConverter.getGregorianDate();
+        String startTime = persianDateConverter.getGregorianDate();
 
         persianDateConverter.setPersianDate(1395,10,30);
-        String endDate = persianDateConverter.getGregorianDate();
+        String endTime = persianDateConverter.getGregorianDate();
 
 
-        System.out.println("Start Date : " + startDate);
-        System.out.println("End Date : " + endDate);
+        System.out.println("Start Date : " + endTime);
+        System.out.println("End Date : " + endTime);
 
-        Date date1 = convertToDate(startDate);
-        Date date2 = convertToDate(endDate);
+        Date date1 = convertToDate(startTime);
+        Date date2 = convertToDate(endTime);
         long minus = dateCalculator(date1,date2);
         System.out.println("Diff is : " + minus+"(ms)");
     }
@@ -29,6 +29,14 @@ public class MainClass {
     private static long dateCalculator(Date startTime, Date endTime) {
         return endTime.getTime() - startTime.getTime();
     }
+
+    private static long dateCalculator(String startTime, String endTime) {
+        Date date1 = convertToDate(startTime);
+        Date date2 = convertToDate(endTime);
+        return dateCalculator(date1,date2);
+
+    }
+
 
     private static Date convertToDate(String strDate) {
         Date date = null;
